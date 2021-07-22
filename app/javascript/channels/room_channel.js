@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("RoomChannel", {
+const chatChannel = consumer.subscriptions.create("RoomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -10,7 +10,7 @@ consumer.subscriptions.create("RoomChannel", {
   },
 
   received: function(data) {
-    return alert(data['message'])
+    return $('#messages').append(data['message']);
   },
 
   speak: function(message) {
